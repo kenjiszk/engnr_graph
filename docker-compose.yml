@@ -1,0 +1,15 @@
+version: '2'
+services:
+  app:
+    tty: true
+    build: .
+    volumes:
+      - .:/app
+    ports:
+     - "3000:80"
+    links:
+      - db
+  db:
+    image: mysql:8.0
+    environment:
+      - MYSQL_ROOT_PASSWORD=$MYSQL_ROOT_PASSWORD
